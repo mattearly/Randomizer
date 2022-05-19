@@ -1,11 +1,12 @@
 ﻿#include "display.h"
 #include "process.h"
 int main(int argc, char* argv[]) {
-  if (argc < 2) {
-    Display::Args(argc, argv);
+  int result = -1;
+  if (argc != 3) {
     Display::Help();
   } else {
-    Process::AllArgs(argc, argv);
+    result = static_cast<int>(Process::AllArgs(argc, argv));
   }
+  return result;
 }
 
