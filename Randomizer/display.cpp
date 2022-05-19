@@ -1,4 +1,5 @@
 #include "display.h"
+#include "string_util.h"
 #include <iostream>
 void Display::Help() {
   std::cout
@@ -7,19 +8,14 @@ void Display::Help() {
     << " -------       ----                               -----------\n"
     << "-p, --percent [x; where x<100]                  | Try for a % success chance. ex \"-p 50.0\"\n"
     << "-o, --odds    [x; where x<y] in [y; where y>x]  | Odds. ex \"-o 1in10\"\n"
-    << "-r, --roll    [x]d[y]; where x&y are ints > 0   | Roll dice. ex \"-r 3d6\"\n"
-    << "-h, --help                                      | This.\n";
+    << "-r, --roll    [x]d[y]; where x&y are ints > 0   | Roll dice. ex \"-r 3d6\"\n";
 }
-std::string RemoveWhitespace(const char* wide_boi) {
-  std::string wut(wide_boi);
-  wut.erase(std::remove_if(wut.begin(), wut.end(), ::isspace), wut.end());
-  return wut;
-}
+
 void Display::Args(int argc, char* argv[]) {
   std::cout << "Args passed in:\n";
   int at = 0;
   while (at < argc) {
-    std::cout << "argv[" << at << "] = " << RemoveWhitespace(argv[at]) << '\n';
+    std::cout << "argv[" << at << "] = " << Util::RemoveWhitespace(argv[at]) << '\n';
     at++;
   }
 }
