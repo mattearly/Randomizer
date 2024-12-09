@@ -1,3 +1,4 @@
 ﻿out
 .vs
 CMakePresets.json
+CMakeSettings.json
