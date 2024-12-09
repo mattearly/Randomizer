@@ -20,15 +20,25 @@ void Display::Args(int argc, char* argv[]) {
   }
 }
 
-void Display::RollResult(int num_dice, int die_sides, int result) {
+void Display::RollResult(int num_dice, int die_sides, int result) {  // not used, but leaving here
   std::cout
     << "Rolled: " << num_dice << "d" << die_sides << '\n'
     << "    Result = " << result << '\n';
+  std::cout << "old version, total only\n";
+}
 
+void Display::RollResult(int num_dice, int die_sides, int* results) {
+    std::cout
+        << "Rolled: " << num_dice << "d" << die_sides << '\n';
+    int sum = 0;
+    for (int i = 0; i < num_dice; ++i) {
+        std::cout << "roll" << i << ": " << results[i] << '\n';
+        sum += results[i];
+    }
+    std::cout << "Added Total: " << sum << '\n';
 }
 
 void Display::PercentResult(bool success) {
   std::cout 
     << "Win: " << std::boolalpha << success << '\n';
-
 }
